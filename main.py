@@ -42,13 +42,19 @@ def main():
     driver.get(PORTFOLIO_URL)
     time.sleep(2)
 
-    # 40銘柄程度だと5回程度
-    for i in range(5):
-        driver.execute_script("document.getElementById('portfolio-foot').scrollIntoView({behavior: 'smooth',block: 'start'});")
-        time.sleep(1)
-    
     html = driver.page_source.encode('utf-8')
     soup = BeautifulSoup(html, "html.parser")
+    tables = soup.select('#portfolio-layout > section')
+    table_length = len(tables)
+    while True:
+        driver.execute_script("document.getElementById('portfolio-foot').scrollIntoView({behavior: 'smooth',block: 'start'});")
+        time.sleep(1)
+        html = driver.page_source.encode('utf-8')
+        soup = BeautifulSoup(html, "html.parser")
+        tables = soup.select('#portfolio-layout > section')
+        if(table_length == len(tables)):
+            break
+        table_length = len(tables)
 
     all_dict = {
         'code':[],
@@ -61,8 +67,6 @@ def main():
         'present_value':[]
     }
 
-    tables = soup.select('#portfolio-layout > section')
-    table_length = len(tables)
 
 
     for x in range(4, table_length):

@@ -24,4 +24,5 @@ def make_graph(port_folio_df):
   plt.figure(dpi=200)
   plt.title("総額%d円"%sum, fontsize=18)
   plt.pie(values, labels=keys, autopct="%1.1f%%", textprops={'size': 'small'},)
-  plt.show()
+  plt.savefig('portfolio_chart.png')
+
