@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+selenium = "*"
+pandas = "*"
+webdriver-manager = "*"
+bs4 = "*"
+pandas-datareader = "*"
+xlrd = "*"
+matplotlib = "*"
+japanize-matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
