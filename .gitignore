@@ -1,2 +1,5 @@
 .env
 portfolio_chart.png
+.venv
+__pycache__
+requirements.txt
